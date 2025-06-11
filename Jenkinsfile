@@ -17,5 +17,20 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            agent {
+                docker {
+                    image 'node:21-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                cd learn-jenkins-app
+                test -f build/index.html
+                yarn test
+                '''
+            }
+        }
     }
 }
