@@ -10,6 +10,7 @@ pipeline {
             }
             steps {
                 sh '''
+                cd learn-jenkins-app
                 yarn -v
                 yarn
                 yarn build
