@@ -32,10 +32,24 @@ pipeline {
                 '''
             }
         }
-        post {
-            always {
-                junit 'learn-jenkins-app/test-results/junit.xml'
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'node:21-alpine'
+                    reuseNode true
+                }
             }
+            steps {
+                sh '''
+                npm install -g netlify-cli
+                node_modules/.bin/netlify --version
+                '''
+            }
+        }
+    }
+    post {
+        always {
+            junit 'learn-jenkins-app/test-results/junit.xml'
         }
     }
 }
