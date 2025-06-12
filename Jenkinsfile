@@ -32,10 +32,10 @@ pipeline {
                 '''
             }
         }
-    }
-    post {
-        always {
-            junit 'learn-jenkins-app/test-results/junit.xml'
+        post {
+            always {
+                junit 'learn-jenkins-app/test-results/junit.xml'
+            }
         }
     }
 }
