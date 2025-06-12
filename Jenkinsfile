@@ -49,7 +49,8 @@ pipeline {
                 node_modules/.bin/netlify --version
                 echo "Thay doi id $NETLIFY_SITE_ID"
                 node_modules/.bin/netlify status
-                
+                node_modules/.bin/netlify deploy --dir=learn-jenkins-app/build --prod
+
                 '''
             }
         }
